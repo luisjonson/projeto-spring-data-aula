@@ -11,13 +11,9 @@ public class AppSpringTest {
 
 	@Test
 	public void testeIsert() {
-		try {
 
-			System.out.println("conexão bem sucedida...");
-		} catch (Exception e) {
-			e.printStackTrace();
-			// TODO: handle exception
-		}
+		System.out.println("conexão bem sucedida...");
+
 	}
 
 }
