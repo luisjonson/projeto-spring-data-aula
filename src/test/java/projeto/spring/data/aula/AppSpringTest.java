@@ -20,43 +20,54 @@ public class AppSpringTest {
 
 	@Test
 	public void testeIsert() {
-		
-		UsuarioSpringData usuarioSpringData = new  UsuarioSpringData();
+
+		UsuarioSpringData usuarioSpringData = new UsuarioSpringData();
 		usuarioSpringData.setNome("Spring");
 		usuarioSpringData.setEmail("spring@yahoo.com.br");
 		usuarioSpringData.setIdade(30);
 		usuarioSpringData.setLogin("teste123");
 		usuarioSpringData.setSenha("12345");
-		
+
 		interfaceSpringDataUser.save(usuarioSpringData);
 
 		System.out.println("Usuario no banco " + interfaceSpringDataUser.count());
 
 	}
-	
+
 	@Test
 	public void testeConsulta() {
-		
-		
-		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(2L);		
+
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(2L);
 		System.out.println("Usuario é: " + usuarioSpringData.get().getNome());
 		System.out.println("Idade: " + usuarioSpringData.get().getIdade());
 		System.out.println("Email: " + usuarioSpringData.get().getEmail());
 	}
+
 	@Test
 	public void testeConsultaTodos() {
-		
+
 		Iterable<UsuarioSpringData> lista = interfaceSpringDataUser.findAll();
-		
+
 		for (UsuarioSpringData usuarioSpringData : lista) {
-			
+
 			System.out.println("Nome: " + usuarioSpringData.getNome());
 			System.out.println("Idade: " + usuarioSpringData.getIdade());
-			System.out.println("Email: " +usuarioSpringData.getEmail());
+			System.out.println("Email: " + usuarioSpringData.getEmail());
 			System.out.println("Senha: " + usuarioSpringData.getSenha());
 			System.out.println("--------------------------------------------");
-			
+
 		}
+	}
+
+	@t
+	public void testeUpdate() {
+		Optional<UsuarioSpringData> usuarioSpringData = interfaceSpringDataUser.findById(2L);
+
+		UsuarioSpringData data = usuarioSpringData.get();
+		data.setIdade(32);
+
+		interfaceSpringDataUser.save(data);
+
 	}
 
 }
